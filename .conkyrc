@@ -1,0 +1,79 @@
+ouble_buffer yes
+background yes
+
+use_xft yes
+xftfont Smanata:size=10
+xftalpha 1
+
+own_window_type desktop
+
+update_interval 1
+ 
+total_run_times 0
+default_color white
+default_shade_color black
+default_outline_color white
+own_window yes
+own_window_transparent no
+
+own_window_argb_visual yes
+own_window_colour 000000
+own_window_argb_value 140
+
+own_window_hints undecorated,below,skip_taskbar,sticky,skip_pager
+no_buffers yes
+minimum_size 200 5
+maximum_width 300
+draw_shades no
+draw_outline no
+draw_borders no
+stippled_borders 0
+alignment top_right
+gap_x 20
+gap_y 20
+uppercase no
+
+#use_spaces yes
+
+color0 aaccff
+color1 slategrey
+color2 ffffff
+
+TEXT
+${color2}${alignr}Time / Info
+${color1}date:   ${color0}${time %a,} ${time %e %B %G}
+${color1}time:   ${color0}${time %H:%M:%S}
+${color1}uptime: ${color0}$uptime
+${color1}os:     ${color0}${sysname} ${kernel}
+${stippled_hr 2 1}
+${color2}${alignr}CPU
+${color1}freq:   ${color0}${freq}Mhz
+${color1}core 1: ${color0}${cpu cpu1}% ${alignr}${cpubar cpu1 6,135}
+${color1}core 2: ${color0}${cpu cpu2}% ${alignr}${cpubar cpu2 6,135}
+
+${color1}CPU Temp: ${alignr}${acpitemp}C$color
+${color0}${stippled_hr 2 1}
+${color2}${alignr}Memory
+${color1}ram: ${color0}$memperc%${alignr}${membar 6,135}
+${color1}swap: ${color0}$swapperc%${alignr}${swapbar 6,135}
+${stippled_hr 2 1}
+${color2}${alignr}Space
+# /home
+${color1}ArchLinux: ${alignr}${color0}${fs_used /home}/${fs_size /home}
+${fs_bar /home}${if_mounted /run/media/awyra/a7b11d9b-740c-4b30-8b58-4a1090f79509}
+ 
+${color1}Linux Mint: ${alignr}${color0}${fs_used /run/media/awyra/a7b11d9b-740c-4b30-8b58-4a1090f79509}/${fs_size /run/media/awyra/a7b11d9b-740c-4b30-8b58-4a1090f79509}
+${fs_bar /run/media/awyra/a7b11d9b-740c-4b30-8b58-4a1090f79509}${endif}${if_mounted /run/media/awyra/UUI}
+ 
+${color1}UUI: ${alignr}${color0}${fs_used /run/media/awyra/UUI}/${fs_size /run/media/awyra/UUI}
+${fs_bar /run/media/awyra/UUI}${endif}${if_mounted /run/media/awyra/System}
+ 
+${color1}Windows(C): ${alignr}${color0}${fs_used /run/media/awyra/System}/${fs_size /run/media/awyra/System}
+${fs_bar /run/media/awyra/System}${endif}${if_mounted /run/media/awyra/Data}
+ 
+${color1}Windows(D): ${alignr}${color0}${fs_used /run/media/awyra/Data}/${fs_size /run/media/awyra/Data}
+${fs_bar /run/media/awyra/Data}${endif}
+${stippled_hr 2 1}
+${color2}${alignr}Network
+${color1}eth:  ${color1}down:${color0} ${downspeed eth0} k/s ${color1}  up:${color0} ${upspeed eth0} k/s
+${color1}wlan: ${color1}down:${color0} ${downspeed wlan0} k/s ${color1}  up:${color0} ${upspeed wlan0} k/s
